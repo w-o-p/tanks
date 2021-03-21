@@ -1,12 +1,12 @@
 # ГЛАВНЫЙ ФАЙЛ
-from classes import Tank
+from classes import Tank, Harch
 import pygame
 
 pygame.init()
 
 FPS = 60
-WIDTH = 1200
-HEIGHT = 800
+WIDTH = 600
+HEIGHT = 400
 DINO_COLOR = (83, 83, 83)
 
 color = (255, 255, 255)
@@ -48,10 +48,15 @@ if __name__ == '__main__':
                     exit()
                 elif event.key == pygame.K_e:
                     if turn == 1:
+                        t2.gunpoint_down()
                         t1.fire()
+                        h = Harch(t1.rect.x + t1.rect.w - 4, t1.rect.y,1, all_sprites)
                         turn += 1
                     else:
+                        t1.gunpoint_down()
                         t2.fire()
+                        h = Harch(t2.rect.x, t2.rect.y,-1, all_sprites)
+                        turn -= 1
 
         # --------
         # изменение объектов и многое др.
