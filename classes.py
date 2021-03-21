@@ -45,5 +45,5 @@ class Harch(pygame.sprite.Sprite):
         self.x = 0
 
     def update(self):
-        self.x += 1
-        self.rect = self.rect.move(50*self.side, self.x**2-3*self.x)
+        self.x += 0.5
+        self.rect = self.rect.move(25 * self.side, self.x ** 2 - 3 * self.x)

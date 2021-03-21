@@ -34,7 +34,9 @@ screen.fill('black')
 
 # главный цикл
 if __name__ == '__main__':
-    while True:
+
+    runnning = True
+    while runnning:
 
         # задержка
         clock.tick(FPS)
@@ -50,12 +52,12 @@ if __name__ == '__main__':
                     if turn == 1:
                         t2.gunpoint_down()
                         t1.fire()
-                        h = Harch(t1.rect.x + t1.rect.w - 4, t1.rect.y,1, all_sprites)
+                        h = Harch(t1.rect.x + t1.rect.w - 4, t1.rect.y, 1, all_sprites)
                         turn += 1
                     else:
                         t1.gunpoint_down()
                         t2.fire()
-                        h = Harch(t2.rect.x, t2.rect.y,-1, all_sprites)
+                        h = Harch(t2.rect.x, t2.rect.y, -1, all_sprites)
                         turn -= 1
 
         # --------
@@ -65,6 +67,12 @@ if __name__ == '__main__':
 
         all_sprites.draw(screen)
         all_sprites.update()
+
+        try:
+            if pygame.sprite.collide_mask(t2, h):
+                runnning = False
+        except Exception:
+            pass
 
         # обновление экрана
         pygame.display.update()
